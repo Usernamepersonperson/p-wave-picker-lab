@@ -1,0 +1,30 @@
+[project]
+name = "p-wave-picker-lab"
+version = "0.1.0"
+description = "P-wave pickers (STA/LTA, AIC, learned) and quick Pd/tau_c magnitude for low-cost seismic nodes"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["numpy>=1.26", "scipy>=1.11", "scikit-learn>=1.4", "matplotlib>=3.8"]
+
+[project.optional-dependencies]
+fetch = ["obspy>=1.4"]
+dev = ["pytest>=8", "ruff>=0.5", "obspy>=1.4"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:asyncio"
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["cache"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "RUF"]
+ignore = ["RUF001", "RUF002"]

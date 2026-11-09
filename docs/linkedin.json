@@ -1,0 +1,32 @@
+{
+  "claim": "A tiny P-wave picker lands within 0.03 s of analyst picks on real Swiss earthquake data.",
+  "data_label": "open data: Swiss Seismological Service (SED) at ETH Zurich, 2021-2026",
+  "stats": [
+    [
+      "0.03 s",
+      "median pick error vs analysts",
+      "accent"
+    ],
+    [
+      "97%",
+      "of picks found, 5.5 false/stn-day",
+      "green"
+    ],
+    [
+      "0.38",
+      "median magnitude error",
+      "amber"
+    ]
+  ],
+  "limit": "Not a certified warning system: 48 events, thresholds tuned on the same data.",
+  "alt": "Two dark charts: a histogram of P-pick errors sharply peaked at zero seconds, and warning time rising with distance from a blind zone of about 34 km.",
+  "hashtags": [
+    "#Seismology",
+    "#EarthquakeEarlyWarning",
+    "#ObsPy",
+    "#SignalProcessing",
+    "#IoT",
+    "#OpenSource"
+  ],
+  "post": "Earthquake early warning lives or dies in the first few seconds, and a cheap sensor node has very little compute to spend on them.\n\nI built p-wave-picker-lab, an open-source toolkit that picks the P-wave onset (STA/LTA plus an AIC refinement, and a small logistic-regression picker), estimates magnitude from the first 3 seconds (Pd and tau_c style) and applies a simple alert rule. It all runs on numpy and scikit-learn.\n\nI tested it on real open data: 233 vertical broadband records of 48 Swiss earthquakes (M2.0 to M4.4, 2021 to 2026) from the Swiss Seismological Service, scored against the analysts' own picks.\n\nMeasured results: the median pick error is 0.03 s (90th percentile 0.16 s), and 97% of analyst picks are found. On 48 hours of event-free noise the picker still fires 5.5 times per station-day, and the 3 s magnitude estimate is only moderately good (median error 0.38 magnitude units). With a 3 s window plus 1 s latency the blind zone is about 34 km.\n\nNot verified: this is not a certified early-warning system, the event set is small, and the thresholds were tuned on the same data.\n\nIf you ran a dense low-cost sensor network, which would you tighten first: false triggers or the magnitude estimate?\n\nCode: https://github.com/Usernamepersonperson/p-wave-picker-lab"
+}
