@@ -87,7 +87,8 @@ flowchart LR
 
 - Not a certified early-warning system, and not tested on a live stream or on low-cost sensors. The data are research-grade broadband records.
 - Small event set: 48 events, 10 stations, one region; 12 events M2.0-2.5, 24 M2.5-3.5, 12 M3.5-4.5.
-- Thresholds are tuned on the same data used for reporting (STA/LTA on and STA length; learned probability threshold). Only the learned model weights and the magnitude relations are cross-validated.
+- Thresholds are tuned on the same data used for reporting (STA/LTA on and STA length; learned probability threshold; the alert's Pd gate, set to the 10th percentile of event Pd). Only the learned model weights and the magnitude relations are cross-validated.
+- On event records the picker starts searching 2 s before the analyst pick, so the pick rate does not count early triggers in the pre-event part of the record; false triggers are measured separately on the noise records.
 - False triggers are counted on 2 station-days of screened but not manually inspected noise, so some may be real small events, blasts or instrument glitches.
 - The alert-on-noise figure uses an assumed distance (median event distance), because a lone node has no location.
 - Analyst picks come from a network with processing of its own (some may be AIC-assisted), which can flatter agreement.
